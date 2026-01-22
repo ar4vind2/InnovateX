@@ -2941,6 +2941,57 @@
     margin: 0 6px;
   }
 }
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem; /* Tight spacing */
+  padding: 2rem 1rem;
+}
+
+.footer-brand-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem; /* Close social icons to brand */
+}
+
+.footer-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; /* Logos close together */
+  flex: 1;
+}
+
+.footer-logo-container img {
+  max-width: 120px; /* Scale down for mobile */
+  height: auto;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-brand-section {
+    align-items: center;
+  }
+  
+  .footer-logo-img {
+    max-width: 100px; /* Smaller on phone */
+  }
+}
+
 
   </style>
 </head>
@@ -3518,40 +3569,44 @@
   </section>
 
   <!-- FOOTER -->
-  <footer id="register">
-    <div class="footer-content">
-      <div>
-        <div class="footer-logo">
-          <i class="fas fa-bolt"></i> InnovateX
-        </div>
-        <div class="social-icons">
-          <a href="https://www.instagram.com/mits_mca?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-discord"></i></a>
-        </div>
+<footer id="register"> 
+  <div class="footer-content">
+    <!-- Grouped logo + social icons for better mobile clustering -->
+    <div class="footer-brand-section">
+      <div class="footer-logo">
+        <i class="fas fa-bolt"></i> InnovateX
       </div>
-      
-      <div class="footer-logo-container">
-        <img src="./images/mitslogo.png" alt="MITS Logo" class="footer-logo-img" loading="lazy">
-      </div>
-
-      <div class="footer-logo-container">
-        <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img" loading="lazy">
-      </div>
-      
-      <div>
-        <h3 style="margin-bottom: 25px; color: var(--light); font-size: 1.5rem;">Contact</h3>
-        <div class="footer-links">
-          <a href="mailto:computex@mgits.ac.in">computex@mgits.ac.in</a>
-          <a href="tel:9745920571">+91 9745920571</a>
-          <a href="tel:8714597642">+91 8714597642</a>
-        </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/mits_mca?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
       </div>
     </div>
     
-    <div class="copyright">
-      © 2026 InnovateX Hackathon 2.0 • All rights reserved.
+    <!-- Logos stacked closely, centered on mobile -->
+    <div class="footer-logos">
+      <div class="footer-logo-container">
+        <img src="./images/mitslogo.png" alt="MITS Logo" class="footer-logo-img" loading="lazy">
+      </div>
+      <div class="footer-logo-container">
+        <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img" loading="lazy">
+      </div>
     </div>
-  </footer>
+    
+    <!-- Contact section -->
+    <div>
+      <h3 style="margin-bottom: 25px; color: var(--light); font-size: 1.5rem;">Contact</h3>
+      <div class="footer-links">
+        <a href="mailto:computex@mgits.ac.in">computex@mgits.ac.in</a>
+        <a href="tel:9745920571">+91 9745920571</a>
+        <a href="tel:8714597642">+91 8714597642</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="copyright">
+    © 2026 InnovateX Hackathon 2.0 • All rights reserved.
+  </div>
+</footer>
 
   <!-- OPTIMIZED JAVASCRIPT -->
   <script>
