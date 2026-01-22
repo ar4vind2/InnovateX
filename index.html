@@ -86,6 +86,76 @@
       --glass-border: rgba(15, 23, 42, 0.1);
       --gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #0284c7 100%);
       --gradient-glow: linear-gradient(135deg, rgba(79, 70, 229, 0.8) 0%, rgba(124, 58, 237, 0.8) 50%, rgba(2, 132, 199, 0.8) 100%);
+      
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+    }
+
+    /* Light mode specific styles */
+    .light-mode .card,
+    .light-mode .prize-card,
+    .light-mode .time-box,
+    .light-mode .highlight-card,
+    .light-mode .rulebook-content,
+    .light-mode .rule-section,
+    .light-mode .hero p,
+    .light-mode .section-header p,
+    .light-mode .rulebook-subtitle {
+      color: #0f172a !important;
+    }
+
+    .light-mode .card h3,
+    .light-mode .prize-card h3,
+    .light-mode .rule-section-header h3,
+    .light-mode .highlight-card h4,
+    .light-mode .rule-subsection h4,
+    .light-mode .final-clause p,
+    .light-mode .rule-signature p,
+    .light-mode .notification-toast-content h4 {
+      color: #0f172a !important;
+    }
+
+    .light-mode .card p,
+    .light-mode .prize-card p,
+    .light-mode .time-box small,
+    .light-mode .highlight-card p,
+    .light-mode .rule-section-content .rules li,
+    .light-mode .rules-sublist li,
+    .light-mode .final-clause p,
+    .light-mode .download-note,
+    .light-mode .copyright,
+    .light-mode .hero p,
+    .light-mode .section-header p,
+    .light-mode .rulebook-subtitle {
+      color: #475569 !important;
+    }
+
+    /* Update background for light mode */
+    .light-mode body {
+      background-color: #f8fafc !important;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 30%) !important;
+    }
+
+    /* Update the rulebook section for light mode */
+    .light-mode #rulebook {
+      background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%) !important;
+    }
+
+    .light-mode #rulebook::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(14, 165, 233, 0.04) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
     }
 
     /* ========== BASE STYLES ========== */
@@ -724,11 +794,10 @@
       position: relative;
     }
 
-    @media (max-width: 768px) {
-      .hero h1 {
-        animation: none;
-        background: linear-gradient(90deg, #22d3ee, #6366f1);
-      }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .hero h1::after {
@@ -741,12 +810,6 @@
       height: 4px;
       background: var(--gradient);
       border-radius: 2px;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     .hero p {
@@ -2187,11 +2250,13 @@
         display: none;
       }
       
-      /* Simplify gradients and animations */
+      /* FIX: Mobile gradient for hero h1 */
       .hero h1 {
-        animation: none !important;
-        background: linear-gradient(90deg, #22d3ee, #6366f1) !important;
-        background-size: auto !important;
+        background: linear-gradient(90deg, #22d3ee, #a78bfa, #6366f1) !important;
+        background-size: 200% auto !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        color: transparent !important;
       }
       
       /* Disable backdrop-filter on mobile for performance */
@@ -2313,8 +2378,37 @@
         font-size: 3rem;
       }
       
+      /* FIX: Footer spacing on mobile */
+      footer {
+        padding: 60px 5% 30px !important;
+      }
+      
       .footer-content {
         flex-direction: column;
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+      
+      .footer-logo-container {
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .footer-logo-img {
+        max-width: 150px;
+        max-height: 80px;
+      }
+      
+      .social-icons {
+        margin-left: 0;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      
+      .copyright {
+        padding-top: 30px;
+        font-size: 0.9rem;
       }
       
       .ghost-toggle-container {
@@ -2537,6 +2631,27 @@
       .highlight-card h4 {
         font-size: 1.1rem;
       }
+      
+      /* FIX: Footer spacing on small mobile */
+      footer {
+        padding: 50px 5% 25px !important;
+      }
+      
+      .footer-logo-img {
+        max-width: 120px;
+        max-height: 60px;
+      }
+      
+      .social-icons a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+      }
+      
+      .copyright {
+        padding-top: 25px;
+        font-size: 0.85rem;
+      }
     }
 
     @media (max-width: 400px) {
@@ -2576,6 +2691,12 @@
       .highlight-card {
         min-width: 120px;
         padding: 12px;
+      }
+      
+      /* FIX: Footer spacing on very small mobile */
+      .footer-logo-img {
+        max-width: 100px;
+        max-height: 50px;
       }
     }
 
@@ -3425,6 +3546,13 @@
         document.getElementById("boo").classList.add("hide");
         isDarkMode = true;
       }
+      
+      // Force update of all sections for light mode
+      setTimeout(() => {
+        document.querySelectorAll('section').forEach(section => {
+          section.style.backgroundColor = isDarkMode ? '' : '#f8fafc';
+        });
+      }, 10);
     }
 
     // ========== COUNTDOWN TIMER ==========
