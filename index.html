@@ -2796,7 +2796,66 @@
     margin-top: 12px;      /* reduce gap below logo */
   }
 }
+/* Enhanced Mobile Footer Fixes */
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 5% 30px !important; /* Reduce overall padding to shrink height */
+  }
 
+  .footer-content {
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center everything */
+    justify-content: center; /* Reduce spreading */
+    gap: 20px !important; /* Tighter gaps between sections */
+    margin-bottom: 30px !important; /* Reduce bottom margin */
+  }
+
+  .footer-content > div {
+    width: 100%; /* Full width for better flow */
+    text-align: center; /* Center text and icons */
+    margin: 0 !important; /* Remove any phantom margins */
+    padding: 0; /* No extra padding */
+  }
+
+  .footer-logo-container {
+    margin: 0 auto !important; /* Center logos */
+  }
+
+  .footer-logo-img {
+    max-width: 140px !important; /* Increase width slightly for visibility */
+    max-height: 70px !important; /* Limit height to prevent stretching */
+    width: auto; /* Maintain aspect ratio */
+    height: auto;
+    margin: 0 auto; /* Center image */
+  }
+
+  .social-icons {
+    margin-left: 0 !important; /* Explicitly remove left margin */
+    margin-top: 10px !important; /* Small gap above social icons */
+    justify-content: center; /* Center icons */
+    gap: 15px !important; /* Tighter icon spacing */
+  }
+
+  .footer-links {
+    gap: 12px !important; /* Tighter contact link spacing */
+  }
+
+  .copyright {
+    padding-top: 20px !important; /* Reduce top padding */
+    font-size: 0.9rem; /* Slightly smaller text to save space */
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-logo-img {
+    max-width: 120px !important;
+    max-height: 60px !important;
+  }
+
+  .footer-content {
+    gap: 15px !important;
+  }
+}
   </style>
 </head>
 
