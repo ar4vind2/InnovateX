@@ -3360,15 +3360,18 @@
         
         <!-- Download Button for Rulebook PDF -->
         <div class="rules-download-container">
-         <a 
-  href="./rules/InnovateX_Rulebook.pdf" 
-  download="InnovateX_Rulebook.pdf"
+        <a
+  href="./rules/InnovateX_Rulebook.pdf"
+  download
   class="btn btn-primary"
 >
-  <i class="fas fa-download"></i> Download Rulebook
+  <i class="fas fa-file-pdf"></i> Download Rulebook
 </a>
 
-          <p class="download-note">Download the complete rulebook for offline reference</p>
+<p class="download-note">
+  PDF will open if download is blocked by your browser
+</p>
+
         </div>
         
         <p style="text-align: center; margin-top: 40px;"><strong>Mr. Adithya S Nair - 9745920571</strong></p>
@@ -3862,22 +3865,22 @@
     // ========== SMOOTH SCROLLING ==========
     function setupEventListeners() {
       // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            e.preventDefault();
-            
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
+     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      e.preventDefault();
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
       });
+    }
+  });
+});
+
       
       // Registration buttons
       const registerBtns = document.querySelectorAll('#registerBtn, #heroRegisterBtn');
