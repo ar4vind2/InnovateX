@@ -2772,6 +2772,30 @@
     display: none !important;
   }
 }
+/* ===== FIX EXTRA SPACE AROUND FOOTER LOGO (MOBILE) ===== */
+@media (max-width: 768px) {
+
+  footer {
+    padding: 45px 5% 35px;   /* reduce vertical padding */
+  }
+
+  .footer-content {
+    margin-bottom: 25px;   /* reduce big gap */
+    gap: 24px;             /* tighter spacing between sections */
+  }
+
+  .footer-logo-container {
+    margin-bottom: 0;      /* remove phantom spacing */
+  }
+
+  .footer-logo-img {
+    max-height: 80px;      /* IMPORTANT: fixes empty vertical space */
+  }
+
+  .social-icons {
+    margin-top: 12px;      /* reduce gap below logo */
+  }
+}
 
   </style>
 </head>
