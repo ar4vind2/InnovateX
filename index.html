@@ -2912,6 +2912,35 @@
     margin: 0 8px;
   }
 }
+/* ===== PERFECTLY BALANCED FOOTER LOGOS ===== */
+@media (max-width: 768px) {
+
+  .footer-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72px;          /* SAME visual height for all logos */
+    margin: 4px 0;
+  }
+
+  .footer-logo-img {
+    max-height: 100%;
+    max-width: 120px;      /* prevents overly wide logos */
+    object-fit: contain;   /* NO stretching */
+    display: block;
+  }
+
+}
+@media (max-width: 768px) {
+  .footer-content {
+    gap: 16px;
+  }
+
+  .footer-logo-container {
+    display: inline-flex;
+    margin: 0 6px;
+  }
+}
 
   </style>
 </head>
