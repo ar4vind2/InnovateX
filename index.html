@@ -523,6 +523,99 @@
       width: 100%;
     }
 
+    /* ========== ENHANCED REGISTER BUTTON (NAVBAR) ========== */
+    .nav-register-btn {
+      padding: 14px 36px;
+      border-radius: var(--border-radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 0.95) 0%, 
+        rgba(139, 92, 246, 0.95) 100%);
+      color: white;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 
+        0 8px 32px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .nav-register-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.25), 
+        transparent);
+      transition: left 0.7s ease;
+      z-index: -1;
+    }
+
+    .nav-register-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, 
+        rgba(99, 102, 241, 1) 0%, 
+        rgba(139, 92, 246, 1) 100%);
+      border-radius: var(--border-radius-sm);
+      z-index: -2;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-register-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 15px 40px rgba(99, 102, 241, 0.4),
+        0 0 30px rgba(99, 102, 241, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .nav-register-btn:hover::before {
+      left: 100%;
+    }
+
+    .nav-register-btn:hover::after {
+      opacity: 1;
+    }
+
+    .nav-register-btn:hover i {
+      transform: translateX(5px) rotate(15deg);
+      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    }
+
+    .nav-register-btn i {
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    /* Glowing pulse animation for button */
+    @keyframes btn-pulse {
+      0%, 100% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3); }
+      50% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3); }
+    }
+
+    .nav-register-btn.pulse {
+      animation: btn-pulse 2s infinite ease-in-out;
+    }
+
     /* ========== BUTTONS ========== */
     .btn {
       padding: 18px 42px;
@@ -1565,10 +1658,20 @@
     .footer-content {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
       gap: 50px;
       margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+      min-width: 250px;
     }
 
     .footer-logo {
@@ -1579,33 +1682,52 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-bottom: 25px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 15px;
     }
     
     .footer-logo-container {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 20px;
+      flex: 1;
+      min-width: 250px;
     }
 
     .footer-logo-img {
-      max-width: 180px;
-      max-height: 120px;
+      max-width: 200px;
+      max-height: 100px;
       width: auto;
       height: auto;
       object-fit: contain;
       transition: var(--transition-fast);
+      filter: brightness(1.1);
     }
 
     .light-mode .footer-logo-img {
-      filter: brightness(0) invert(0);
+      filter: brightness(0.9);
+    }
+    
+    .light-mode .mca-logo {
+      filter: invert(1) brightness(0.7) contrast(1.2);
     }
 
     .footer-logo-img:hover {
       transform: scale(1.05);
+      filter: brightness(1.2);
+    }
+
+    .footer-links-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      flex: 1;
+      min-width: 250px;
     }
     
     .footer-logo i {
@@ -1616,6 +1738,7 @@
       display: flex;
       flex-direction: column;
       gap: 18px;
+      align-items: center;
     }
 
     .footer-links a {
@@ -1624,33 +1747,19 @@
       transition: var(--transition-fast);
       font-weight: 500;
       position: relative;
-      padding-left: 0;
-      transition: padding-left 0.3s ease;
+      padding: 8px 15px;
     }
 
     .footer-links a:hover {
       color: var(--secondary);
-      padding-left: 10px;
-    }
-
-    .footer-links a::before {
-      content: '›';
-      position: absolute;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .footer-links a:hover::before {
-      opacity: 1;
+      transform: translateX(5px);
     }
 
     .social-icons {
       display: flex;
       gap: 20px;
-      margin-top: 25px;
-      margin-left: 70px;
-      align-items: center; 
+      justify-content: center;
+      align-items: center;
     }
 
     .social-icons a {
@@ -2389,14 +2498,15 @@
         margin-bottom: 40px;
       }
       
-      .footer-logo-container {
-        margin: 0 auto;
+      .footer-brand,
+      .footer-logo-container,
+      .footer-links-container {
         width: 100%;
         text-align: center;
       }
       
       .footer-logo-img {
-        max-width: 150px;
+        max-width: 180px;
         max-height: 80px;
       }
       
@@ -2422,8 +2532,9 @@
         font-size: 0.9rem;
       }
       
-      .register-btn {
-        padding: 12px 28px;
+      .nav-register-btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
       }
       
       .notification-toast {
@@ -2550,7 +2661,7 @@
         padding: 14px 28px;
       }
       
-      .register-btn {
+      .nav-register-btn {
         padding: 12px 24px;
         font-size: 0.85rem;
       }
@@ -2638,8 +2749,8 @@
       }
       
       .footer-logo-img {
-        max-width: 120px;
-        max-height: 60px;
+        max-width: 150px;
+        max-height: 70px;
       }
       
       .social-icons a {
@@ -2695,8 +2806,8 @@
       
       /* FIX: Footer spacing on very small mobile */
       .footer-logo-img {
-        max-width: 100px;
-        max-height: 50px;
+        max-width: 130px;
+        max-height: 60px;
       }
     }
 
@@ -2728,123 +2839,122 @@
       }
     }
     /* ===== FIX FOOTER ON MOBILE ===== */
-@media (max-width: 768px) {
-  footer {
-    padding: 60px 5% 40px;
-    text-align: center;
-  }
+    @media (max-width: 768px) {
+      footer {
+        padding: 60px 5% 40px;
+        text-align: center;
+      }
 
-  .footer-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-  }
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+      }
 
-  .footer-content > div {
-    width: 100%;
-    text-align: center;
-  }
+      .footer-content > div {
+        width: 100%;
+        text-align: center;
+      }
 
-  .footer-logo-container {
-    justify-content: center;
-  }
+      .footer-logo-container {
+        justify-content: center;
+      }
 
-  .social-icons {
-    margin-left: 0; /* FIXES THE BUG */
-    justify-content: center;
-  }
+      .social-icons {
+        margin-left: 0;
+        justify-content: center;
+      }
 
-  .footer-links {
-    align-items: center;
-  }
+      .footer-links {
+        align-items: center;
+      }
 
-  .footer-links a {
-    padding-left: 0;
-  }
+      .footer-links a {
+        padding-left: 0;
+      }
 
-  .footer-links a::before {
-    display: none;
-  }
-}
-/* ===== REMOVE SCROLL INDICATOR ON MOBILE ===== */
-@media (max-width: 768px) {
-  .scroll-indicator {
-    display: none !important;
-  }
-}
-/* ===== FIX EXTRA SPACE AROUND FOOTER LOGO (MOBILE) ===== */
-@media (max-width: 768px) {
+      .footer-links a::before {
+        display: none;
+      }
+    }
+    /* ===== REMOVE SCROLL INDICATOR ON MOBILE ===== */
+    @media (max-width: 768px) {
+      .scroll-indicator {
+        display: none !important;
+      }
+    }
+    /* ===== FIX EXTRA SPACE AROUND FOOTER LOGO (MOBILE) ===== */
+    @media (max-width: 768px) {
+      footer {
+        padding: 45px 5% 35px;
+      }
 
-  footer {
-    padding: 45px 5% 35px;   /* reduce vertical padding */
-  }
+      .footer-content {
+        margin-bottom: 25px;
+        gap: 24px;
+      }
 
-  .footer-content {
-    margin-bottom: 25px;   /* reduce big gap */
-    gap: 24px;             /* tighter spacing between sections */
-  }
+      .footer-logo-container {
+        margin-bottom: 0;
+      }
 
-  .footer-logo-container {
-    margin-bottom: 0;      /* remove phantom spacing */
-  }
+      .footer-logo-img {
+        max-height: 80px;
+      }
 
-  .footer-logo-img {
-    max-height: 80px;      /* IMPORTANT: fixes empty vertical space */
-  }
+      .social-icons {
+        margin-top: 12px;
+      }
+    }
+    /* Enhanced Mobile Footer Fixes */
+    @media (max-width: 768px) {
+      footer {
+        padding: 40px 5% 30px !important;
+      }
 
-  .social-icons {
-    margin-top: 12px;      /* reduce gap below logo */
-  }
-}
-/* Enhanced Mobile Footer Fixes */
-@media (max-width: 768px) {
-  footer {
-    padding: 40px 5% 30px !important; /* Reduce overall padding to shrink height */
-  }
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px !important;
+        margin-bottom: 30px !important;
+      }
 
-  .footer-content {
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center everything */
-    justify-content: center; /* Reduce spreading */
-    gap: 20px !important; /* Tighter gaps between sections */
-    margin-bottom: 30px !important; /* Reduce bottom margin */
-  }
+      .footer-content > div {
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
+        padding: 0;
+      }
 
-  .footer-content > div {
-    width: 100%; /* Full width for better flow */
-    text-align: center; /* Center text and icons */
-    margin: 0 !important; /* Remove any phantom margins */
-    padding: 0; /* No extra padding */
-  }
+      .footer-logo-container {
+        margin: 0 auto !important;
+      }
 
-  .footer-logo-container {
-    margin: 0 auto !important; /* Center logos */
-  }
+      .footer-logo-img {
+        max-width: 140px !important;
+        max-height: 70px !important;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+      }
 
-  .footer-logo-img {
-    max-width: 140px !important; /* Increase width slightly for visibility */
-    max-height: 70px !important; /* Limit height to prevent stretching */
-    width: auto; /* Maintain aspect ratio */
-    height: auto;
-    margin: 0 auto; /* Center image */
-  }
+      .social-icons {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        justify-content: center;
+        gap: 15px !important;
+      }
 
-  .social-icons {
-    margin-left: 0 !important; /* Explicitly remove left margin */
-    margin-top: 10px !important; /* Small gap above social icons */
-    justify-content: center; /* Center icons */
-    gap: 15px !important; /* Tighter icon spacing */
-  }
+      .footer-links {
+        gap: 12px !important;
+      }
 
-  .footer-links {
-    gap: 12px !important; /* Tighter contact link spacing */
-  }
-
-  .copyright {
-    padding-top: 20px !important; /* Reduce top padding */
-    font-size: 0.9rem; /* Slightly smaller text to save space */
-  }
-}
+      .copyright {
+        padding-top: 20px !important;
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
@@ -2926,7 +3036,9 @@
       <a href="#timeline">Timeline</a>
       <a href="#rulebook">Rules</a>
       <a href="#gallery">Gallery</a>
-      <a href="#register" class="register-btn" id="registerBtn">Register</a>
+      <a href="#" class="nav-register-btn pulse" id="registerBtn">
+        <i class="fas fa-rocket"></i> Apply with Devfolio
+      </a>
       
       <!-- Ghost Toggle Button -->
       <div class="ghost-toggle-container">
@@ -2958,7 +3070,7 @@
       
       <div class="hero-btns">
         <button class="btn btn-primary" id="heroRegisterBtn">
-          <i class="fas fa-rocket"></i> Register Now
+          <i class="fas fa-rocket"></i> Apply with Devfolio
         </button>
         <a href="#timeline" class="btn btn-secondary">
           <i class="fas fa-calendar-alt"></i> View Schedule
@@ -3195,7 +3307,7 @@
             </div>
             <div class="rule-section-content">
               <ul class="rules">
-                <li><strong>Release:</strong> Hackathon domains will be officially released one month prior to the event.</li>
+                <li><strong>Release:</strong> The hackathon domains will be officially announced prior to the event.</li>
                 <li><strong>Samples:</strong> Sample project statements will be shared to indicate the expected difficulty level and the depth of problem-solving required.</li>
                 <li><strong>Project Selection:</strong> Teams may propose a unique and original idea aligned with any domain.</li>
                 <li><strong>Submission Window:</strong> Abstracts must be submitted within 2 weeks from the domain release date.</li>
@@ -3357,14 +3469,12 @@
   <i class="fas fa-file-pdf"></i> Download Rulebook
 </a>
 
-<p class="download-note">
-  PDF will open if download is blocked by your browser
-</p>
-
         </div>
         
-        <p style="text-align: center; margin-top: 40px;"><strong>Mr. Adithya S Nair - 9745920571</strong></p>
-        <p style="text-align: center;"><strong>Mr. Ananthakrishnan K A - 8714597642</strong></p>
+        <p style="text-align: center; margin-top: 40px;"><strong>Mr. Adithya S Nair</strong></p>
+        <p style="text-align: center;"><strong>9745920571</strong></p>
+        <p style="text-align: center;margin-top: 40px;"><strong>Mr. Ananthakrishnan K A</strong></p>
+        <p style="text-align: center;"><strong>8714597642</strong></p>
       </div>
     </div>
   </section>
@@ -3423,25 +3533,23 @@
   <!-- FOOTER -->
 <footer id="register"> 
   <div class="footer-content">
-    <div>
+    <div class="footer-brand">
       <div class="footer-logo">
         <i class="fas fa-bolt"></i> InnovateX
       </div>
       <div class="social-icons">
         <a href="https://www.instagram.com/mits_mca?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="https://discord.gg/sxrUwCHprD"><i class="fab fa-discord"></i></a>
       </div>
     </div>
     
     <div class="footer-logo-container">
       <img src="./images/mitslogo.png" alt="MITS Logo" class="footer-logo-img" loading="lazy">
+      <img src="./images/devfolio.png" alt="Devfolio Logo" class="footer-logo-img" loading="lazy">
+      <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img mca-logo" loading="lazy">
     </div>
 
-    <div class="footer-logo-container">
-      <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img" loading="lazy">
-    </div>
-    
-    <div>
+    <div class="footer-links-container">
       <h3 style="margin-bottom: 25px; color: var(--light); font-size: 1.5rem;">Contact</h3>
       <div class="footer-links">
         <a href="mailto:computex@mgits.ac.in">computex@mgits.ac.in</a>
@@ -3880,7 +3988,7 @@
       });
       
       // Ripple effect for buttons
-      const buttons = document.querySelectorAll('.btn, .register-btn');
+      const buttons = document.querySelectorAll('.btn, .nav-register-btn');
       buttons.forEach(button => {
         button.addEventListener('click', function(e) {
           createRippleEffect(this, e);
