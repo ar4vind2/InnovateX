@@ -525,12 +525,12 @@
 
     /* ========== ENHANCED REGISTER BUTTON (NAVBAR) ========== */
     .nav-register-btn {
-      padding: 14px 36px;
+      padding: 14px 42px;
       border-radius: var(--border-radius-sm);
-      font-weight: 700;
-      font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 1rem;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.2px;
       background: linear-gradient(135deg, 
         rgba(99, 102, 241, 0.95) 0%, 
         rgba(139, 92, 246, 0.95) 100%);
@@ -547,8 +547,9 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       z-index: 1;
+      white-space: nowrap;
     }
 
     .nav-register-btn::before {
@@ -1018,6 +1019,32 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.8; }
     }
+    .venue-info {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 25px 30px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+}
+
+.venue-info h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.venue-info p {
+  color: var(--gray-light);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
 
     /* ========== CARDS ========== */
     .timeline {
@@ -2147,6 +2174,10 @@
     .loading-dot:nth-child(3) {
       background: var(--accent);
     }
+    #heroRegisterBtn {
+      cursor: pointer;
+    }
+
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
@@ -2284,6 +2315,10 @@
 
     .modal-actions .btn {
       flex: 1;
+    }
+    /* Hide menu toggle on desktop */
+    .menu-toggle {
+      display: none;
     }
 
     /* ========== MOBILE OPTIMIZATIONS ========== */
@@ -2969,7 +3004,7 @@
       </div>
       
       <div class="loading-logo">
-        <i class="fas fa-bolt"></i>
+        <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img mca-logo" loading="lazy">
         <span>InnovateX 2.0</span>
       </div>
       
@@ -3021,7 +3056,7 @@
   <!-- NAVIGATION -->
   <nav class="navbar" id="navbar">
     <div class="logo">
-      <i class="fas fa-bolt"></i>
+      <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img mca-logo" loading="lazy">
       <span>InnovateX 2.0</span>
     </div>
     
@@ -3036,12 +3071,7 @@
       <a href="#timeline">Timeline</a>
       <a href="#rulebook">Rules</a>
       <a href="#gallery">Gallery</a>
-      <div 
-	      class="apply-button" 
-	      data-hackathon-slug="innovatex2" 
-	      data-button-theme="light"
-	      style="height: 44px; width: 312px"
-      ></div>
+      <a href="https://forms.gle/3eqQCt3bFXG7jpeq6" class="register-btn" target="_blank" rel="noopener" style="padding: 14px 36px;">Register</a>
       
       <!-- Ghost Toggle Button -->
       <div class="ghost-toggle-container">
@@ -3057,11 +3087,12 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="hero-tagline">
-        <span class="typewriter">Build the Future</span>
-      </div>
+  <section class="hero" id="home" style="padding: 120px 10%;
+    padding-top: 120px;
+    position: relative;
+    opacity: 1;
+    transform: translateY(50px);">
+    <div class="hero-content" >
       
       <h1 class="heading-font animated-gradient-text">
         InnovateX Hackathon 2.0
@@ -3072,12 +3103,9 @@
       </p>
       
       <div class="hero-btns">
-        <div 
-	        class="apply-button" 
-	        data-hackathon-slug="innovatex2" 
-	        data-button-theme="light"
-	        style="height: 44px; width: 312px"
-        ></div>
+        <button class="btn btn-primary" id="heroRegisterBtn">
+          <i class="fas fa-rocket"></i> Register Now
+        </button>
         <a href="#timeline" class="btn btn-secondary">
           <i class="fas fa-calendar-alt"></i> View Schedule
         </a>
@@ -3187,17 +3215,14 @@
   <section id="timeline">
     <div class="section-header">
       <h2 class="heading-font">Event Timeline</h2>
-      <p>Two exciting phases: Idea Selection and the Final Hackathon. Mark your calendars!</p>
+      <p>Two exciting phases: Idea Building and the Final Hackathon. Mark your calendars!</p>
     </div>
     
     <div class="timeline">
       <div class="card fade-in">
         <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-        <h3>Phase 1: Idea Selection</h3>
-        <p>Submit your innovative ideas. The top ideas will be selected to proceed to the final hackathon. Expert judges will evaluate based on creativity, feasibility, and impact.</p>
-        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--glass-border);">
-          <small style="color: var(--secondary); font-weight: 600; font-size: 1rem;">Duration: 2 Weeks</small>
-        </div>
+        <h3>Phase 1: Domain Selection and idea building</h3>
+        <p>Participants must first select a domain and develop a problem statement or solution idea within that domain. Teams should focus on identifying real-world challenges and building innovative, feasible concepts.</p>
       </div>
       <div class="card fade-in">
         <div class="card-icon"><i class="fas fa-code"></i></div>
@@ -3209,6 +3234,13 @@
       </div>
     </div>
   </section>
+  <div class="venue-info fade-in">
+  <h3><i class="fas fa-map-marker-alt"></i> Event Venues</h3>
+  <p>
+    <strong>M014, M015, M016</strong>
+  </p>
+</div>
+
 
   <!-- RULEBOOK SECTION -->
   <section id="rulebook">
@@ -3221,17 +3253,7 @@
           <div class="highlight-card fade-in">
             <i class="fas fa-users"></i>
             <h4>Team Size</h4>
-            <p>2-4 Members</p>
-          </div>
-          <div class="highlight-card fade-in">
-            <i class="fas fa-calendar-check"></i>
-            <h4>Abstract Submission</h4>
-            <p>2 Weeks Window</p>
-          </div>
-          <div class="highlight-card fade-in">
-            <i class="fas fa-trophy"></i>
-            <h4>Finalists</h4>
-            <p>20 Teams Selected</p>
+            <p>3-4 Members</p>
           </div>
           <div class="highlight-card fade-in">
             <i class="fas fa-clock"></i>
@@ -3273,7 +3295,7 @@
             </div>
             <div class="rule-section-content">
               <ul class="rules">
-                <li>Each team must consist of 2-4 members. No team with more than 4 members will be permitted.</li>
+                <li>Each team must consist of 3-4 members. No team with more than 4 members will be permitted.</li>
                 <li>Team members cannot be changed after abstract submission.</li>
                 <li>A participant may be part of only one team.</li>
                 <li>Interchanging team members between teams is strictly prohibited.</li>
@@ -3289,7 +3311,6 @@
             </div>
             <div class="rule-section-content">
               <ul class="rules">
-                <li><strong>Abstract Submission:</strong> There is no charge for abstract submission.</li>
                 <li><strong>Participant Expense:</strong> INR 200 per participant towards food arrangements, including dinner and breakfast.</li>
                 <li><strong>Adjustment Policy:</strong> The participant expense is allocated for advance food arrangements and therefore cannot be adjusted or transferred in case of withdrawal, disqualification, or non-attendance.</li>
               </ul>
@@ -3304,47 +3325,22 @@
             </div>
             <div class="rule-section-content">
               <ul class="rules">
-                <li><strong>Release:</strong> The hackathon domains will be officially announced prior to the event.</li>
+                <li><strong>Release:</strong> The hackathon domains will be officially announced at the event.</li>
                 <li><strong>Samples:</strong> Sample project statements will be shared to indicate the expected difficulty level and the depth of problem-solving required.</li>
                 <li><strong>Project Selection:</strong> Teams may propose a unique and original idea aligned with any domain.</li>
-                <li><strong>Submission Window:</strong> Abstracts must be submitted within 2 weeks from the domain release date.</li>
-                <li><strong>Late Policy:</strong> Late submissions will not be considered under any circumstances.</li>
               </ul>
             </div>
           </div>
           
-          <!-- Section 5: Abstract Evaluation & Shortlisting -->
+          <!-- Section 5: Rules During the Hackathon (Event Day) -->
           <div class="rule-section">
             <div class="rule-section-header">
-              <h3><i class="fas fa-clipboard-check"></i> 5. Abstract Evaluation & Shortlisting</h3>
-              <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
-            </div>
-            <div class="rule-section-content">
-              <ul class="rules">
-                <li><strong>Criteria:</strong> Abstracts will be evaluated based on:
-                  <ul class="rules-sublist">
-                    <li>Relevance of the idea to the chosen domain</li>
-                    <li>Innovation and originality</li>
-                    <li>Technical feasibility</li>
-                    <li>Clarity of problem definition and solution approach</li>
-                  </ul>
-                </li>
-                <li><strong>Announcement:</strong> The final 20 shortlisted teams will be announced one week prior to the event.</li>
-                <li><strong>Communication:</strong> Shortlisted teams will be notified via official email or any other communication medium announced by the organizers.</li>
-                <li><strong>Response:</strong> Failure to acknowledge or respond to the selection notice within the stipulated time may result in automatic disqualification.</li>
-              </ul>
-            </div>
-          </div>
-          
-          <!-- Section 6: Rules During the Hackathon (Event Day) -->
-          <div class="rule-section">
-            <div class="rule-section-header">
-              <h3><i class="fas fa-calendar-day"></i> 6. Rules During the Hackathon (Event Day)</h3>
+              <h3><i class="fas fa-calendar-day"></i> 5. Rules During the Hackathon (Event Day)</h3>
               <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="rule-section-content">
               <div class="rule-subsection">
-                <h4><i class="fas fa-user-tie"></i> 6.1 General Conduct</h4>
+                <h4><i class="fas fa-user-tie"></i> 5.1 General Conduct</h4>
                 <ul class="rules">
                   <li>Participants must maintain professional behavior, discipline, and sportsmanship at all times.</li>
                   <li>Any form of misconduct, harassment, damage to venue property, or disruptive behavior will lead to immediate disqualification.</li>
@@ -3353,7 +3349,7 @@
               </div>
               
               <div class="rule-subsection">
-                <h4><i class="fas fa-code"></i> 6.2 Project Development Rules</h4>
+                <h4><i class="fas fa-code"></i> 5.2 Project Development Rules</h4>
                 <ul class="rules">
                   <li>Projects must be built during the hackathon duration only.</li>
                   <li>Use of pre-written code, previously developed projects, or reused competition submissions is strictly prohibited (except for open-source libraries and frameworks).</li>
@@ -3363,7 +3359,7 @@
               </div>
               
               <div class="rule-subsection">
-                <h4><i class="fas fa-microchip"></i> 6.3 Hardware & Software Rules</h4>
+                <h4><i class="fas fa-microchip"></i> 5.3 Hardware & Software Rules</h4>
                 <ul class="rules">
                   <li>Teams may build hardware, software, or hybrid solutions.</li>
                   <li>Participants are responsible for procuring required hardware components, sensors, boards, or peripherals.</li>
@@ -3372,7 +3368,7 @@
               </div>
               
               <div class="rule-subsection">
-                <h4><i class="fas fa-clock"></i> 6.4 Time & Evaluation Compliance</h4>
+                <h4><i class="fas fa-clock"></i> 5.4 Time & Evaluation Compliance</h4>
                 <ul class="rules">
                   <li>Teams must strictly adhere to all checkpoints, evaluations, and presentations.</li>
                   <li>Missing any evaluation round will result in disqualification.</li>
@@ -3385,7 +3381,7 @@
           <!-- Section 7: Judging & Decision Policy -->
           <div class="rule-section">
             <div class="rule-section-header">
-              <h3><i class="fas fa-gavel"></i> 7. Judging & Decision Policy</h3>
+              <h3><i class="fas fa-gavel"></i> 6. Judging & Decision Policy</h3>
               <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="rule-section-content">
@@ -3400,7 +3396,7 @@
           <!-- Section 8: Disqualification Conditions -->
           <div class="rule-section">
             <div class="rule-section-header">
-              <h3><i class="fas fa-ban"></i> 8. Disqualification Conditions</h3>
+              <h3><i class="fas fa-ban"></i> 7. Disqualification Conditions</h3>
               <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="rule-section-content">
@@ -3419,10 +3415,10 @@
             </div>
           </div>
           
-          <!-- Section 9: Organizer Rights & Authority -->
+          <!-- Section 8: Organizer Rights & Authority -->
           <div class="rule-section">
             <div class="rule-section-header">
-              <h3><i class="fas fa-crown"></i> 9. Organizer Rights & Authority</h3>
+              <h3><i class="fas fa-crown"></i> 8. Organizer Rights & Authority</h3>
               <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="rule-section-content">
@@ -3439,10 +3435,10 @@
             </div>
           </div>
           
-          <!-- Section 10: Final Clause -->
+          <!-- Section 9: Final Clause -->
           <div class="rule-section">
             <div class="rule-section-header">
-              <h3><i class="fas fa-file-contract"></i> 10. Final Clause</h3>
+              <h3><i class="fas fa-file-contract"></i> 9. Final Clause</h3>
               <span class="rule-section-toggle"><i class="fas fa-chevron-right"></i></span>
             </div>
             <div class="rule-section-content">
@@ -3530,7 +3526,7 @@
   <!-- FOOTER -->
 <footer id="register"> 
   <div class="footer-content">
-    <div class="footer-brand">
+    <div class="footer-brand" style="flex: 1;">
       <div class="footer-logo">
         <i class="fas fa-bolt"></i> InnovateX
       </div>
@@ -3542,13 +3538,18 @@
     
     <div class="footer-logo-container">
       <img src="./images/mitslogo.png" alt="MITS Logo" class="footer-logo-img" loading="lazy">
-      <img src="./images/devfolio.png" alt="Devfolio Logo" class="footer-logo-img" loading="lazy">
+      <img src="./images/shreshtalogo.PNG" alt="Shreshta Logo" class="footer-logo-img" loading="lazy">
       <img src="./images/logo.png" alt="MCA Logo" class="footer-logo-img mca-logo" loading="lazy">
     </div>
 
     <div class="footer-links-container">
       <h3 style="margin-bottom: 25px; color: var(--light); font-size: 1.5rem;">Contact</h3>
       <div class="footer-links">
+        <a href="https://maps.app.goo.gl/Gv1bupEV9gCN2CaMA"
+          target="_blank" 
+          rel="noopener">
+          <i class="fas fa-map-marker-alt"></i> College Location
+        </a>
         <a href="mailto:computex@mgits.ac.in">computex@mgits.ac.in</a>
         <a href="tel:9745920571">+91 9745920571</a>
         <a href="tel:8714597642">+91 8714597642</a>
@@ -3974,15 +3975,9 @@
   });
 });
 
-      
-      // Registration buttons
-      const registerBtns = document.querySelectorAll('#registerBtn, #heroRegisterBtn');
-      registerBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          showToast("Registration will open soon!", "info");
-        });
-      });
+document.getElementById("heroRegisterBtn").addEventListener("click", function () {
+    window.open("https://forms.gle/3eqQCt3bFXG7jpeq6", "_blank");
+  });      
       
       // Ripple effect for buttons
       const buttons = document.querySelectorAll('.btn, .nav-register-btn');
